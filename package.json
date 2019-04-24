@@ -1,0 +1,24 @@
+{
+  "name": "es6_stoper",
+  "version": "1.0.0",
+  "description": "exercises of ES6",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel script.js --watch --out-file script-compiled.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kemaron/ES6_stoper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kemaron/ES6_stoper/issues"
+  },
+  "homepage": "https://github.com/kemaron/ES6_stoper#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1"
+  }
+}

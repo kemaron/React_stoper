@@ -1,0 +1,33 @@
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 250px;
+    margin: 0 auto;
+    background-color: red;
+    padding: 30px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.stopwatch {
+    width: 250px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: orangered;
+    text-align: center;
+    color: white;
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.button {
+   text-decoration: none;
+   text-transform: uppercase;
+   font-weight: bold;
+   font-size: 20px;
+   color: white;
+   padding: 2px 30px;   
+   margin-top: 20px;    
+}
+
