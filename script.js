@@ -3,9 +3,7 @@ class Stopwatch extends React.Component {
         super();
         this.running = false;
         this.reset();
-    }
-
-    
+    }    
      
     reset() {
         this.state = {
@@ -14,8 +12,7 @@ class Stopwatch extends React.Component {
                 seconds: 0,
                 miliseconds: 0
             }
-        }    
-        
+        }         
     }
 
    
@@ -42,36 +39,39 @@ class Stopwatch extends React.Component {
     }
 
     calculate() {
-        this.times.miliseconds += 1;
-        if (this.times.miliseconds >= 100) {
-            this.times.seconds += 1;
-            this.times.miliseconds = 0;
+        let newTime = {
+			miliseconds: this.state.times.miliseconds,
+			seconds : this.state.times.seconds,
+			minutes: this.state.times.minutes
+		};
+
+		newTime.miliseconds += 1;
+
+		if(newTime.miliseconds >= 100) {
+			newTime.seconds += 1;
+			newTime.miliseconds = 0;
         }
-        if (this.times.seconds >= 60) {
-            this.times.minutes += 1;
-            this.times.seconds = 0;
+        
+		if (newTime.seconds >=60) {
+			newTime.minutes += 1;
+			newTime.seconds = 0;
         }
+
+        this.setState({times: newTime});
     }
 
    render() {
     return(
         <div className='container'>
             <nav className='controls'>
-
-
-            <button onClick={e => this.start(e)}>Start</button>
-			<button onClick={e => this.stop(e)}>Stop</button>
-			<button onClick={e => this.restart(e)}>Restart</button>                
-            </nav>
-            
-            <div className="stopwatch">{this.format(this.state.times)}</div>
-            
+            <a href="#" className="button" id="start" onClick={e => this.start(e)}>Start</a>
+            <a href="#" className="button" id="stop" onClick={e => this.stop(e)}>Stop</a>
+            <a href="#" className="button" id="reset" onClick={e => this.reset(e)}>Reset</a>
+            </nav>            
+            <div className="stopwatch">{this.format(this.state.times)}</div>            
         </div>
     );
    }
-
-
-
 
 }
 
@@ -84,20 +84,5 @@ function pad0(value) {
     }
     return result;
 }
-
-/*
-const stopwatch = new Stopwatch(
-document.querySelector('.stopwatch'));
-
-let startButton = document.getElementById('start');
-startButton.addEventListener('click', () => stopwatch.start());
-
-let stopButton = document.getElementById('stop');
-stopButton.addEventListener('click', () => stopwatch.stop());
-
-let resetButton = document.getElementById('reset');
-resetButton.addEventListener('click', () => stopwatch.reset());
-*/
-
 
 ReactDOM.render(<Stopwatch />, document.getElementById("app"));
