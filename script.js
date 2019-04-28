@@ -1,18 +1,21 @@
-import React from 'react';
-
 class Stopwatch extends React.Component {
-    constructor() {
+   constructor() {
         super();
         this.running = false;
         this.reset();
     }
 
+    
+     
     reset() {
-        this.times = {
-            minutes: 0,
-            seconds: 0,
-            miliseconds: 0
-        };
+        this.state = {
+            times: {
+                minutes: 0,
+                seconds: 0,
+                miliseconds: 0
+            }
+        }    
+        
     }
 
    
@@ -50,22 +53,30 @@ class Stopwatch extends React.Component {
         }
     }
 
-    render() {
-		return(
-			<div className='container'>
-				<nav className='controls'>
-					<button onClick={e => this.start(e)}>Start</button>
-					<button onClick={e => this.stop(e)}>Stop</button>
-					<button onClick={e => this.restart(e)}>Restart</button>
-				</nav>
-				{this.format(this.state.times)}
-			</div>
-		);
-}
+   render() {
+    return(
+        <div className='container'>
+            <nav className='controls'>
+
+
+            <button onClick={e => this.start(e)}>Start</button>
+			<button onClick={e => this.stop(e)}>Stop</button>
+			<button onClick={e => this.restart(e)}>Restart</button>                
+            </nav>
+            
+            <div className="stopwatch">{this.format(this.state.times)}</div>
+            
+        </div>
+    );
+   }
+
+
+
 
 }
 
 // funkcja dodaje zero, jesli czas jest jednocyfrowy
+
 function pad0(value) {
     let result = value.toString();
     if (result.length < 2) {
@@ -89,4 +100,4 @@ resetButton.addEventListener('click', () => stopwatch.reset());
 */
 
 
-ReactDOM.render(<Stopwatch/>, document.getElementById("app"));
+ReactDOM.render(<Stopwatch />, document.getElementById("app"));
